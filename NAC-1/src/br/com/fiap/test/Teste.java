@@ -10,20 +10,26 @@ import javax.persistence.EntityManager;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
+import br.com.fiap.dao.EmprestimoDAO;
 import br.com.fiap.dao.LivroDAO;
+import br.com.fiap.dao.impl.EmprestimoDAOImpl;
 import br.com.fiap.dao.impl.LivroDAOImpl;
 import br.com.fiap.entity.Editora;
+import br.com.fiap.entity.Emprestimo;
 import br.com.fiap.entity.Genero;
 import br.com.fiap.entity.Livro;
+import br.com.fiap.entity.Usuario;
 import br.com.fiap.singleton.EntityManagerFactorySingleton;
 
 class Teste {
 	private static LivroDAO livroDao;
+	private static EmprestimoDAO emprestimoDao;
 	
 	@BeforeAll
 	public static void inicializar() {
 		EntityManager em = EntityManagerFactorySingleton.getInstance().createEntityManager();
 		livroDao = new LivroDAOImpl(em);
+		emprestimoDao = new EmprestimoDAOImpl(em);
 	}
 	@Test
 	void teste() {
@@ -42,10 +48,14 @@ class Teste {
 		for(Livro c: listLivro) {
 			System.out.println(c.getNome());
 		}
-	}
-	@Test
-	void test() {
-		fail("Not yet implemented");
+		Emprestimo emprestimo = new Emprestimo();
+		emprestimo.setData(Calendar.getInstance());
+		emprestimo.setLivro(livro);
+		emprestimo.setUsuario(new Usuario("nome"));
+		emprestimo.setNumeroDias(5);
+		emprestimoDao.cadastrar(emprestimo);
+
+		
 	}
 
 }

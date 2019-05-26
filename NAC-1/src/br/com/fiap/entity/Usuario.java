@@ -71,7 +71,9 @@ public class Usuario {
 		this.foto = foto;
 		this.emprestimos = emprestimos;
 	}
-
+	public Usuario(String nome) {
+		this.nome = nome;
+	}
 	public Usuario() {
 		super();
 		// TODO Auto-generated constructor stub

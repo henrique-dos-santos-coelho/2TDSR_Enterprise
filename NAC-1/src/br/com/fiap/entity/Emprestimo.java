@@ -13,7 +13,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name="T_NAC_EMPRESTIMO")
+@Table(name="T_NAC_UM_EMPRESTIMO")
 @IdClass(EmprestimoPK.class)
 public class Emprestimo {
 	

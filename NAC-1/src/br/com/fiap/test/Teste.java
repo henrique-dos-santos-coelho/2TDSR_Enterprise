@@ -2,6 +2,9 @@ package br.com.fiap.test;
 
 import static org.junit.jupiter.api.Assertions.fail;
 
+import java.util.Calendar;
+import java.util.List;
+
 import javax.persistence.EntityManager;
 
 import org.junit.jupiter.api.BeforeAll;
@@ -9,6 +12,8 @@ import org.junit.jupiter.api.Test;
 
 import br.com.fiap.dao.LivroDAO;
 import br.com.fiap.dao.impl.LivroDAOImpl;
+import br.com.fiap.entity.Editora;
+import br.com.fiap.entity.Genero;
 import br.com.fiap.entity.Livro;
 import br.com.fiap.singleton.EntityManagerFactorySingleton;
 
@@ -22,9 +27,21 @@ class Teste {
 	}
 	@Test
 	void teste() {
+		Editora editora = new Editora();
+		editora.setNome("Editora");
 		Livro livro = new Livro();
-		livro.setNome("");
+		livro.setIsbn("asdasd");
+		livro.setNome("teste");
+		livro.setDataLancamento(Calendar.getInstance());
+		livro.setGenero(Genero.AVENTURA);
+		livro.setEditora(editora);
 		livroDao.cadastrar(livro);
+		
+		
+		List<Livro> listLivro = livroDao.buscarPorNomeEditora("teste");
+		for(Livro c: listLivro) {
+			System.out.println(c.getNome());
+		}
 	}
 	@Test
 	void test() {

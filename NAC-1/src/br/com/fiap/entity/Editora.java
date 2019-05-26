@@ -25,4 +25,42 @@ public class Editora {
 
 	@OneToMany(mappedBy="editora")
 	private List<Livro> livros;
+
+	public Editora() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Editora(int codigo, String nome, List<Livro> livros) {
+		super();
+		this.codigo = codigo;
+		this.nome = nome;
+		this.livros = livros;
+	}
+
+	public int getCodigo() {
+		return codigo;
+	}
+
+	public void setCodigo(int codigo) {
+		this.codigo = codigo;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public List<Livro> getLivros() {
+		return livros;
+	}
+
+	public void setLivros(List<Livro> livros) {
+		this.livros = livros;
+	}
+	
+	
 }
